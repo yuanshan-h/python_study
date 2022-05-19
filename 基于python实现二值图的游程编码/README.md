@@ -69,12 +69,12 @@
 	                uncompress_seq.append(0)
 	    return np.reshape(uncompress_seq,(rows,cols))
 ```
-
-![原图1](https://github.com/yuanshan-h/python_study/blob/main/%E5%9F%BA%E4%BA%8Epython%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%80%BC%E5%9B%BE%E7%9A%84%E6%B8%B8%E7%A8%8B%E7%BC%96%E7%A0%81/QQ.jpg)
-![二值化后压缩后的图](https://github.com/yuanshan-h/python_study/blob/main/%E5%9F%BA%E4%BA%8Epython%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%80%BC%E5%9B%BE%E7%9A%84%E6%B8%B8%E7%A8%8B%E7%BC%96%E7%A0%81/reoutput_QQ.png)
+##运行结果示例
+![原图1](https://www.z4a.net/images/2022/05/20/QQ.md.jpg)
+![二值化后压缩后的图](https://www.z4a.net/images/2022/05/20/reoutput_QQ.md.png)
 
 ![图1压缩率截图](https://www.z4a.net/images/2022/05/19/14de774d0fb134064.png)
 
-![原图2](https://github.com/yuanshan-h/python_study/blob/main/%E5%9F%BA%E4%BA%8Epython%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%80%BC%E5%9B%BE%E7%9A%84%E6%B8%B8%E7%A8%8B%E7%BC%96%E7%A0%81/bilotus1.jpg)
-![二值化后压缩后的图](https://github.com/yuanshan-h/python_study/blob/main/%E5%9F%BA%E4%BA%8Epython%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%80%BC%E5%9B%BE%E7%9A%84%E6%B8%B8%E7%A8%8B%E7%BC%96%E7%A0%81/output_bilotus1.png)
+![原图2](https://www.z4a.net/images/2022/05/20/bilotus1.jpg)
+![二值化后压缩后的图](https://www.z4a.net/images/2022/05/20/reoutput_bilotus1.png)
 ![图2压缩率截图](https://www.z4a.net/images/2022/05/19/Z4FU1QULQVE7CT45EY.png)
