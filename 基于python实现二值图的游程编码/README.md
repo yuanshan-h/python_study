@@ -4,8 +4,67 @@
 游程编码是一种比较简单的压缩算法，其基本思想是将重复且连续出现多次的字符使用（连续出现次数，某个字符）来描述。
 
 游程长度编码是栅格数据压缩的重要编码方法，它的基本思路是：对于一幅栅格图像，常常有行(或列)方向上相邻的若干点具有相同的属性代码，因而可采取某种方法压缩那些重复的记录内容。其编码方案是，只在各行(或列)数据的代码发生变化时依次记录该代码以及相同代码重复的个数，从而实现数据的压缩。
-![图一](https://img-blog.csdn.net/20150207113157954)
+![算法示意图](https://img-blog.csdn.net/20150207113157954)
 ##游程编码的特点
-*代码简单易实现
-*压缩比的大小是与图的复杂程度成反比的，在变化多的部分，游程数就多，变化少的部分游程数就少，图件越简单，压缩效率就越高。
+* 是一种简单的无损数据压缩方式且代码简单易实现
+* 压缩比的大小是与图的复杂程度成反比的，在变化多的部分，游程数就多，变化少的部分游程数就少，图件越简单，压缩效率就越高。
 ![](https://github.com/yuanshan-h/python_study/blob/main/%E5%9F%BA%E4%BA%8Epython%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%80%BC%E5%9B%BE%E7%9A%84%E6%B8%B8%E7%A8%8B%E7%BC%96%E7%A0%81/reoutput_QQ.png)
+
+##游程编码/解码算法的代码实现
+* 压缩代码
+
+``` python
+
+    def BRLE(img):
+    img_f=img.flatten()  # 图像数组扁平化
+    for i in range(len(img_f)):
+        if img_f[i] >= 127:
+            img_f[i] = 255
+        if img_f[i] < 127:
+            img_f[i] = 0
+    BRLE_seq=[]   # 输出序列
+    elemt=[0,255]   # 序列元素种类，因为是二值图，所以元素只有0和1
+    flag=0   # 连续元素的值，假设第一个为0
+    count=0  # 连续元素个数
+    for i in range(len(img_f)):  # 开始遍历
+        if img_f[i]==flag:
+            count+=1
+            if i==len(img_f)-1:  # 遍历到最后一个元素
+                if flag == 0:
+                    BRLE_seq.append(-1 * count)
+                elif flag == 255:
+                    BRLE_seq.append(count)
+        else:
+            if count>=1:
+                 if flag==0:
+                    BRLE_seq.append(-1*count)
+                 elif flag==255:
+                    BRLE_seq.append(count)
+            count=1
+            temp=list(elemt.copy()) # 不更改elemt的值
+            temp.remove(flag)       # 元素不同，更换flag
+            flag=temp[0]
+            if i==len(img_f)-1:     # 与上面相同，遍历到最后一个元素，避免bug
+                if flag == 0:
+                    BRLE_seq.append(-1 * count)
+                elif flag == 255:
+                    BRLE_seq.append(count)
+    print("压缩率：",len(BRLE_seq)/len(img_f)*100,"%")
+    return BRLE_seq                 # 输出的是列表，不是二维数组
+```
+
+* 解压代码
+
+``` python
+
+	def IBRLE(seq,rows,cols):  # 这里要输入压缩后的序列（就是列表）以及源图像的尺寸
+	    ORG_seq=[] # 结果列表
+	    for i in range(len(seq)):
+	        if seq[i]>0:
+	            for m in range(seq[i]):
+	                ORG_seq.append(255)
+	        else:
+	            for n in range(np.abs(seq[i])):  # seq[i]小于0,循环时要取绝对值
+	                ORG_seq.append(0)
+	    return np.reshape(ORG_seq,(rows,cols))
+```
