@@ -10,7 +10,7 @@
 * 压缩比的大小是与图的复杂程度成反比的，在变化多的部分，游程数就多，变化少的部分游程数就少，图件越简单，压缩效率就越高。
 
 
-##游程编码/解码算法的代码实现
+## 游程编码/解码算法的代码实现
 * 压缩代码
 
 ``` python
@@ -69,7 +69,7 @@
 	                uncompress_seq.append(0)
 	    return np.reshape(uncompress_seq,(rows,cols))
 ```
-##运行结果示例
+## 运行结果示例
 
 ![原图1](https://www.z4a.net/images/2022/05/20/QQ.md.jpg)
 ![二值化后压缩后的图](https://www.z4a.net/images/2022/05/20/reoutput_QQ.md.png)
