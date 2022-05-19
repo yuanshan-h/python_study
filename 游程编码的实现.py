@@ -49,11 +49,12 @@ def IBRLE(seq,rows,cols):  # 这里要输入压缩后的序列（就是列表）
         else:
             for n in range(np.abs(seq[i])):  # seq[i]小于0,循环时要取绝对值
                 ORG_seq.append(0)
-    print(len(ORG_seq))
     return np.reshape(ORG_seq,(rows,cols))
 
 def main():
-    img = cv.imread('bilotus1.jpg',1)
+    path = 'QQ.jpg'
+
+    img = cv.imread(path,1)
     grayimg = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
     l = BRLE(grayimg)
     r = IBRLE(l,grayimg.shape[0],grayimg.shape[1])
@@ -61,7 +62,7 @@ def main():
     r=np.array(r,dtype=np.uint8)
 
     
-    cv.imwrite('output_img.png',r)
+    cv.imwrite('reoutput_{}.png'.format(path[:(len(path)-4)]),r)
     cv.imshow('rec_image',r) #重新输出二值化图像
     cv.waitKey(0)
 if __name__ == '__main__':
