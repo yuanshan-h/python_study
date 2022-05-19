@@ -70,9 +70,9 @@
 	    return np.reshape(uncompress_seq,(rows,cols))
 ```
 ##运行结果示例
+
 ![原图1](https://www.z4a.net/images/2022/05/20/QQ.md.jpg)
 ![二值化后压缩后的图](https://www.z4a.net/images/2022/05/20/reoutput_QQ.md.png)
-
 ![图1压缩率截图](https://www.z4a.net/images/2022/05/19/14de774d0fb134064.png)
 
 ![原图2](https://www.z4a.net/images/2022/05/20/bilotus1.jpg)
