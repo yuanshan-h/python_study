@@ -53,7 +53,6 @@ def IBRLE(seq,rows,cols):  # 这里要输入压缩后的序列（就是列表）
 
 def main():
     path = 'QQ.jpg'
-
     img = cv.imread(path,1)
     grayimg = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
     l = BRLE(grayimg)
@@ -61,7 +60,6 @@ def main():
 
     r=np.array(r,dtype=np.uint8)
 
-    
     cv.imwrite('reoutput_{}.png'.format(path[:(len(path)-4)]),r)
     cv.imshow('rec_image',r) #重新输出二值化图像
     cv.waitKey(0)
